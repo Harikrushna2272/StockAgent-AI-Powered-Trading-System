@@ -54,37 +54,21 @@ StockAgent is a fully agentic AI-based trading system that leverages Reinforceme
 ## File Structure
 
 StockAgent/
-│── agents/
-│   ├── market_data_agent.py
-│   ├── sentiment_agent.py
-│   ├── strategy_agent.py
-│   ├── execution_agent.py
-│── models/
-│   ├── reinforcement_learning.py
-│── data/
-│   ├── historical_data.py
-│── utils/
-│   ├── config.py
-│── main.py
-│── requirements.txt
-│── README.md
+-│── agents/
+-│   ├── market_data_agent.py
+-│   ├── sentiment_agent.py
+-│   ├── strategy_agent.py
+-│   ├── execution_agent.py
+-│── models/
+-│   ├── reinforcement_learning.py
+-│── data/
+-│   ├── historical_data.py
+-│── utils/
+-│   ├── config.py
+-│── main.py
+-│── requirements.txt
+-│── README.md
 
-## How It Works
-1. **Market Data Collection:** Fetches real-time stock prices via WebSockets.
-2. **Sentiment Analysis:** Scores recent news articles for trading insights.
-3. **Trade Signal Generation:** Uses RL model & technical indicators to determine Buy/Sell signals.
-4. **Trade Execution:** Places orders automatically via Alpaca API.
-5. **Reinforcement Learning:** Continuously improves strategy through training.
-
-## Future Enhancements
-- Add more RL models like DDPG and A2C.
-- Implement portfolio optimization.
-- Enhance risk management features.
-- Integrate multi-asset trading (crypto, forex).
 
 ## Contributing
 Feel free to fork this repository, improve the strategy, and submit pull requests!
-
-
-
-# StockAgent-AI-Powered-Trading-System
