@@ -1,0 +1,8 @@
+yfinance
+talib 
+numpy 
+pandas 
+alpaca-trade-api 
+stable-baselines3 
+textblob 
+gym
