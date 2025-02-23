@@ -54,20 +54,20 @@ StockAgent is a fully agentic AI-based trading system that leverages Reinforceme
 ## File Structure
 
 StockAgent/
--│── agents/
--│   ├── market_data_agent.py
--│   ├── sentiment_agent.py
--│   ├── strategy_agent.py
--│   ├── execution_agent.py
--│── models/
--│   ├── reinforcement_learning.py
--│── data/
--│   ├── historical_data.py
--│── utils/
--│   ├── config.py
--│── main.py
--│── requirements.txt
--│── README.md
+- │── agents/
+- │   ├── market_data_agent.py
+- │   ├── sentiment_agent.py
+- │   ├── strategy_agent.py
+- │   ├── execution_agent.py
+- │── models/
+- │   ├── reinforcement_learning.py
+- │── data/
+- │   ├── historical_data.py
+- │── utils/
+- │   ├── config.py
+- │── main.py
+- │── requirements.txt
+- │── README.md
 
 
 ## Contributing
