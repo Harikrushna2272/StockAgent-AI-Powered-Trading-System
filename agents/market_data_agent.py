@@ -1,10 +1,12 @@
+# market_data.py
 import websocket
 import json
 import alpaca_trade_api as tradeapi
+from config import API_KEY, API_SECRET, BASE_URL
 
 class MarketDataAgent:
-    def __init__(self, api_key, api_secret, base_url, symbol):
-        self.api = tradeapi.REST(api_key, api_secret, base_url, api_version="v2")
+    def __init__(self, symbol):
+        self.api = tradeapi.REST(API_KEY, API_SECRET, BASE_URL, api_version="v2")
         self.symbol = symbol
         self.ws_url = "wss://stream.data.alpaca.markets/v2/iex"
         self.socket = None
@@ -14,18 +16,16 @@ class MarketDataAgent:
         for item in data:
             if item.get("T") == "t":  # Trade update
                 print(f"Real-time price update for {self.symbol}: {item['p']}")
-                # Call strategy agent for real-time decision-making
-                # Example: self.process_trade_signal(item['p'])
+                # You can call further processing here if needed
 
     def on_open(self, ws):
-        print("WebSocket connected, subscribing to live data...")
+        print("WebSocket connected. Subscribing to live data...")
         auth_data = {
             "action": "auth",
-            "key": "YOUR_ALPACA_API_KEY",
-            "secret": "YOUR_ALPACA_API_SECRET"
+            "key": API_KEY,
+            "secret": API_SECRET
         }
         ws.send(json.dumps(auth_data))
-        
         subscribe_message = {
             "action": "subscribe",
             "trades": [self.symbol]
@@ -41,5 +41,5 @@ class MarketDataAgent:
         self.socket.run_forever()
 
 if __name__ == "__main__":
-    agent = MarketDataAgent("YOUR_ALPACA_API_KEY", "YOUR_ALPACA_API_SECRET", "https://paper-api.alpaca.markets", "AAPL")
+    agent = MarketDataAgent("AAPL")
     agent.start_stream()

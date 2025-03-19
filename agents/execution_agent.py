@@ -1,3 +1,4 @@
+# execution_agent.py
 import alpaca_trade_api as tradeapi
 from config import API_KEY, API_SECRET, BASE_URL
 
@@ -11,11 +12,10 @@ class ExecutionAgent:
             return
         
         side = "buy" if trade_signal == "BUY" else "sell"
-
         try:
             order = self.api.submit_order(
                 symbol=symbol,
-                qty=1,  # Adjust quantity dynamically if needed
+                qty=10, 
                 side=side,
                 type="market",
                 time_in_force="gtc"

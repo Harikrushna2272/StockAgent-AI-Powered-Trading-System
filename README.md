@@ -1,90 +1,50 @@
-# StockAgent: AI-Powered Trading System
+# StockAgent: AI-Driven Trading System
 
-## Overview
-StockAgent is a fully agentic AI-based trading system that leverages Reinforcement Learning (RL), LangChain, and real-time WebSockets to analyze stock market data, generate trade signals, and execute trades automatically. It integrates multiple AI agents, including market data analysis, sentiment analysis, strategy generation, and trade execution, ensuring a comprehensive automated trading workflow.
+**StockAgent** is an AI-driven trading system that processes real-time stock data via WebSockets, performs sentiment analysis, generates trade signals using a Reinforcement Learning (SAC) model enhanced with technical indicators, and executes trades using the Alpaca API.
 
 ## Features
-- **Real-time Market Data Streaming**: Uses WebSockets for low-latency stock price updates.
-- **Reinforcement Learning (RL)**: Implements PPO & SAC models for decision-making.
-- **Technical Analysis**: Computes EMA, RSI, and ATR indicators.
-- **Sentiment Analysis**: Evaluates news sentiment for enhanced trading signals.
-- **Automated Trade Execution**: Places buy/sell orders via Alpaca API.
-- **Configurable Strategy**: Customizable risk parameters, stop-loss, and take-profit settings.
 
-## Technologies Used
-- **Python** (Primary Language)
-- **LangChain** (Agentic AI)
-- **Stable-Baselines3** (RL Algorithms)
-- **Alpaca Trade API** (Execution)
-- **Yahoo Finance & WebSockets** (Market Data)
-- **TA-Lib** (Technical Indicators)
-- **NewsAPI** (Sentiment Analysis)
+- **Real-Time Data Streaming:**  
+  Continuously fetch live trade data using WebSockets.
+
+- **Sentiment Analysis:**  
+  Analyze news headlines via the News API and TextBlob to gauge market sentiment.
+
+- **Reinforcement Learning:**  
+  Use a custom Gym environment to train a Soft Actor-Critic (SAC) model for generating trading signals.
+
+- **Technical Indicators:**  
+  Incorporate conditions like the 200-day moving average to refine buy decisions.
+
+- **Automated Trade Execution:**  
+  Execute trades automatically using the Alpaca Trade API.
+
+## Project Structure
+
+- **config.py:**  
+  Contains API credentials, model file paths, and the list of stock symbols.
+
+- **main.py:**  
+  Orchestrates the overall workflow by fetching data, performing sentiment analysis, generating trade signals, and executing trades.
+
+- **data_fetcher.py:**  
+  Uses a continuously running WebSocket connection to receive real-time trade data and makes the latest data available on demand.
+
+- **sentiment_agent.py:**  
+  Fetches news articles and analyzes sentiment using TextBlob.
+
+- **strategy_agent.py:**  
+  Generates trade signals by combining RL model predictions with technical indicator conditions (e.g., MA200 increasing and current candle low touching MA200).
+
+- **execution_agent.py:**  
+  Executes trades via the Alpaca API.
+
+- **rl_training.py:**  
+  Defines a custom Gym environment for trading and provides functions to train, save, and load the SAC RL model.
 
 ## Installation
-1. Clone the repository:
-   ```sh
-   git clone https://github.com/yourusername/StockAgent.git
+
+1. **Clone the Repository:**
+   ```bash
+   git clone https://github.com/your_username/StockAgent.git
    cd StockAgent
-   ```
-2. Install dependencies:
-   ```sh
-   pip install -r requirements.txt
-   ```
-3. Set up API keys in `config.py`:
-   ```python
-   ALPACA_API_KEY = "your_alpaca_api_key"
-   ALPACA_API_SECRET = "your_alpaca_api_secret"
-   NEWS_API_KEY = "your_news_api_key"
-   ```
-
-## Running the Project
-1. **Start WebSocket Market Data Streaming:**
-   ```sh
-   python market_data_agent.py
-   ```
-2. **Train RL Model:**
-   ```sh
-   python model.py
-   ```
-3. **Run Trading System:**
-   ```sh
-   python main.py
-   ```
-
-## File Structure
-
-StockAgent/
-│── agents/
-│   ├── market_data_agent.py
-│   ├── sentiment_agent.py
-│   ├── strategy_agent.py
-│   ├── execution_agent.py
-│── models/
-│   ├── reinforcement_learning.py
-│── data/
-│   ├── historical_data.py
-│── utils/
-│   ├── config.py
-│── main.py
-│── requirements.txt
-│── README.md
-
-## How It Works
-1. **Market Data Collection:** Fetches real-time stock prices via WebSockets.
-2. **Sentiment Analysis:** Scores recent news articles for trading insights.
-3. **Trade Signal Generation:** Uses RL model & technical indicators to determine Buy/Sell signals.
-4. **Trade Execution:** Places orders automatically via Alpaca API.
-5. **Reinforcement Learning:** Continuously improves strategy through training.
-
-## Future Enhancements
-- Add more RL models like DDPG and A2C.
-- Implement portfolio optimization.
-- Enhance risk management features.
-- Integrate multi-asset trading (crypto, forex).
-
-## Contributing
-Feel free to fork this repository, improve the strategy, and submit pull requests!
-
-
-
-# StockAgent-AI-Powered-Trading-System

@@ -1,5 +1,6 @@
+# sentiment_agent.py
 import requests
-from textblob import TextBlob
+from textblob import TextBlob # to calculate a sentiment polarity score
 import numpy as np
 from config import NEWS_API_KEY
 
@@ -16,9 +17,11 @@ class SentimentAgent:
     def analyze_sentiment(self):
         articles = self.fetch_news()
         if not articles:
-            return 0  # Neutral sentiment if no news found
-        
-        sentiment_scores = [TextBlob(article["title"]).sentiment.polarity for article in articles]
-        return np.mean(sentiment_scores)
+            return 0  # Neutral sentiment if no news
+        scores = [TextBlob(article["title"]).sentiment.polarity for article in articles]
+        return np.mean(scores)
 
-# Optional: Fetch Twitter sentiment (You can integrate Twitter API if needed)
+# Helper function for easier integration
+def analyze_sentiment(ticker):
+    agent = SentimentAgent(ticker)
+    return agent.analyze_sentiment()
